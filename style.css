@@ -1,0 +1,66 @@
+
+.letter-holder{
+    background-color:black;
+    color:red; 
+    border: 1px solid blue; 
+    width:800px;
+    height:300px; 
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap; 
+    margin:0 auto; 
+    padding:10px;
+    border-radius: 5px;
+    justify-content: space-between;
+  
+  
+}
+.key{
+    height: 40px;
+    width: 40px;
+    border: 2px solid white;
+    text-align: center;
+    color: red;
+    background-color:black;
+    border-radius: 5px;
+    margin: auto;
+    line-height: 40px;
+}
+
+.arrow{
+    display: flex;
+    flex-direction: column;
+
+}
+.up, .dawn {
+    height: 16px;
+    width: 32;
+    border: 2px solid white;
+    text-align: center;
+    line-height: 20px;
+}
+.shift{
+    width: 90px;
+}
+
+.tab{
+    width: 70px;
+}
+
+.caps{
+    width: 80px;
+}
+.ctrl{
+    width: 50px;
+}
+
+.space{
+    width: 300px;
+}
+
+.enter{
+    width: 80px;
+}
+.backspace{
+    width: 80px; 
+}
