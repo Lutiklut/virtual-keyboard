@@ -6,7 +6,7 @@
     width:800px;
     height:300px; 
     display:flex;
-    gap:10px;
+    gap:11px;
     flex-wrap:wrap; 
     margin:0 auto; 
     padding:10px;
@@ -26,6 +26,9 @@
     margin: auto;
     line-height: 40px;
 }
+.key:hover{
+    background-color:rgb(59, 56, 56);
+}
 
 .arrow{
     display: flex;
@@ -39,8 +42,11 @@
     text-align: center;
     line-height: 20px;
 }
-.shift{
+.shift-left{
     width: 90px;
+}
+.shift-right{
+    width: 40px;
 }
 
 .tab{
@@ -50,7 +56,8 @@
 .caps{
     width: 80px;
 }
-.ctrl{
+.ctrl-left,
+.ctrl-right{
     width: 50px;
 }
 
@@ -63,4 +70,7 @@
 }
 .backspace{
     width: 80px; 
+}
+.active{
+    background-color:rgb(59, 56, 56);
 }
