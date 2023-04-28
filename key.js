@@ -198,8 +198,8 @@ let en=[
       code: 'Semicolon',
     },
     {
-      small: "'",
-      shift: '"',
+      small: "\'",
+      shift: '&quot;',
       code: 'Quote',
 
     },
@@ -322,7 +322,7 @@ let ru=[
   },
   {
     small: '2',
-    shift: '"',
+    shift: '&quot;',
     code: 'Digit2',
   },
   {
@@ -604,12 +604,17 @@ function init(keybord,keyru){
       else if (keybord[i].code==='ArrowDown'){out+='<div class="key" data="'+keybord[i].code+'">'+String(keybord[i].small)+'</div>'}
       else if (keybord[i].code==='ArrowLeft'){out+='<div class="key" data="'+keybord[i].code+'">'+String(keybord[i].small)+'</div>'}
       else if (keybord[i].code==='ArrowRight'){out+='<div class="key" data="'+keybord[i].code+'">'+String(keybord[i].small)+'</div>'}
-
-
-      else if (keybord[i].code==='Slash'){out+='<div class="key" data="'+keybord[i].code+'" data-symbol-en="'+keybord[i].small+'" data-en-shift="'+keybord[i].shift+'" data-symbol-ru="'+keyru[i].small+'" data-ru-shift="'+keyru[i].shift+'">'+String(keybord[i].small)+'</div>'}
+      else if (keybord[i].code==='BracketLeft'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-ru="'+keyru[i].small+'" >'+String(keybord[i].small)+'</div>'}
+      else if (keybord[i].code==='BracketRight'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-ru="'+keyru[i].small+'" >'+String(keybord[i].small)+'</div>'}
+      else if (keybord[i].code==='Backslash'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-symbol-ru="'+keyru[i].small+'" data-ru-shift="'+keyru[i].shift+'" >'+String(keybord[i].small)+'</div>'; } 
+      else if (keybord[i].code==='Semicolon'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-ru="'+keyru[i].small+'" >'+String(keybord[i].small)+'</div>'}
+      else if (keybord[i].code==='Quote'){out+='<div class="key" data="'+String(keybord[i].code)+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-ru="'+keyru[i].small+'" >'+String(keybord[i].small)+'</div>'; console.log(keybord[i].shift, "SHIF")}
+      else if (keybord[i].code==='Comma'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-ru="'+keyru[i].small+'" >'+String(keybord[i].small)+'</div>'}
+      else if (keybord[i].code==='Period'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-ru="'+keyru[i].small+'" >'+String(keybord[i].small)+'</div>'}
+      else if (keybord[i].code==='Slash'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-symbol-ru="'+keyru[i].small+'" data-ru-shift="'+keyru[i].shift+'">'+String(keybord[i].small)+'</div>'}
       else if (keybord[i].code==='Minus'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'">'+String(keybord[i].small)+'</div>'}
       else if (keybord[i].code==='Equal'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'">'+String(keybord[i].small)+'</div>'}
-      else if (keybord[i].code==='Backquote'){out+='<div class="key" data="'+keybord[i].code+'" data-en="'+keybord[i].small+'" data-shift="'+keybord[i].shift+'" data-ru="'+keyru[i].small+'">'+String(keybord[i].small)+'</div>'}
+      else if (keybord[i].code==='Backquote'){out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-ru="'+keyru[i].small+'">'+String(keybord[i].small)+'</div>'}
       else if(Number( keybord[i].small)||keybord[i].small==='0'){if ( [2,3,4,6,7].includes(Number(keybord[i].small))) {
         out+='<div class="key" data="'+keybord[i].code+'" data-number="'+keybord[i].small+'" data-symbol="'+keybord[i].shift+'" data-symbol-ru="'+keyru[i].shift+'">'+String(keybord[i].small)+'</div>'
       }
@@ -618,128 +623,211 @@ function init(keybord,keyru){
     } 
     letter.innerHTML=(out);
    }
+init(en,ru)
 
-
-   /// let klava=init(en); 
-  // function initShift(keybord){
-    let out='';
- //   for (let i=0;i<keybord.length;i++){
-//       if (keybord[i].code==='Backspace'){out+='<div class="key backspace" data="'+keybord[i].code+'">'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='Tab'){out+='<div class="key tab" data="'+keybord[i].code+'" >'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='CapsLock'){out+='<div class="key caps" data="'+keybord[i].code+'" >'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='ShiftLeft'){out+='<div class="key shift-left" data="'+keybord[i].code+'">'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='ShiftRight'){out+='<div class="key shift-right" data="'+keybord[i].code+'">'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='Enter'){out+='<div class="key enter" data="'+keybord[i].code+'">'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='ControlLeft'){out+='<div class="key ctrl-left" data="'+keybord[i].code+'">'+String( keybord[i].small)+'</div>'}
-//       else if (keybord[i].code==='ControlRight'){out+='<div class="key ctrl-right" data="'+keybord[i].code+'">'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='Alt'){out+='<div class="key alt" data="'+keybord[i].code+'">'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='Meta'){out+='<div class="key meta" data="'+keybord[i].code+'">'+String( keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='Space'){out+='<div class="key space" data="'+keybord[i].code+'">'+String(keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='ArrowUp'){out+='<div class="key" data="'+keybord[i].code+'">'+String(keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='ArrowDown'){out+='<div class="key" data="'+keybord[i].code+'">'+String(keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='ArrowLeft'){out+='<div class="key" data="'+keybord[i].code+'">'+String(keybord[i].shift)+'</div>'}
-//       else if (keybord[i].code==='ArrowRight'){out+='<div class="key" data="'+keybord[i].code+'">'+String(keybord[i].shift)+'</div>'}
-//       else{out+='<div class="key" data="'+keybord[i].code+'" >'+String( keybord[i].shift)+'</div>'}
-//  //   } 
- //   letter.innerHTML=(out);
-//}
-
-  init(en,ru)
-//if (ch === ch.toUpperCase()){}
-// for(let i=0;i<letter.children.length;i++){
-//     console.log(letter.children[i])
-// if (letter.children[i].classList.contains('shift-left')){ console.log(1)} 
-// }
-
-
-//--------------
-// document.addEventListener('mouseup', function(event) {
-//     //const code = target.getAttribute("data");
-//     console.log(letter);
-//     for(let i=0; i<letter.children.length; i++) {
-    
-//         if (letter.children[i].classList.contains('shift-left')) {
-//             console.log(letter.children[i]);
-//             init(en); console.log(letter.children[i]);
-//         } 
-// }})
-// -------------- 
-    
-// if (1){
-// const code = target.getAttribute("data");
- //console.log(letter.children)
-// }
-// for(let i=0;i<letter.children.length;i++){
-//     let child =letter.children[i];
-//     child.addEventListener('mouseup', function() {
-//         console.log("--> Mouse UP!!!!");
-//         if(child.classList.contains('shift-right')|| child.classList.contains('shift-left')) {
-//             init(en)
-//         }
-//     });
-//     console.log("child: " + child.classList);   
-// }  
-for(let i=0;i<letter.children.length;i++){
-
+let shiftFuncDown=function(){ 
+    for(let i=0;i<letter.children.length;i++){
     let child =letter.children[i];
-    let data=child.getAttribute('data'); 
-    let dataRu=child.getAttribute('data-ru'); 
-    let dataEт=child.getAttribute('data-en');
-    let dataShift= child.getAttribute('data-shift');
-    let dataSymbolRu= child.getAttribute('data-symbol-ru');
-    console.log( dataSymbolRu);
+    let dataEn=child.getAttribute('data-en');
+    let dataSymbol= child.getAttribute('data-symbol');
+    let dataNumber=child.getAttribute('data-number');
+    
+    if (typeof(dataEn)==='string'){dataEn=dataEn.toUpperCase();
+        child.innerHTML=dataEn
+    }
+    if ("'"===dataNumber){
+        child.innerHTML=dataSymbol;
+      
+    }
+    if (Number(dataNumber)||dataNumber==='0'||['-',';','=',"[","]","\\", ',','.','`','/', "'"].includes(dataNumber)){
+        child.innerHTML=dataSymbol;
+       // console.log(dataNumber)
+    }
+    
+}
+
+}
+let shiftFunUp=function(){
+    for(let i=0;i<letter.children.length;i++){
+        let child =letter.children[i];
+        let data=child.getAttribute('data'); 
+        let dataRu=child.getAttribute('data-ru'); 
+        let dataEn=child.getAttribute('data-en');
+        let dataShift= child.getAttribute('data-shift');
+        let dataSymbolRu= child.getAttribute('data-symbol-ru');
+        let dataSymbol= child.getAttribute('data-symbol');
+        let dataEnShift= child.getAttribute('data-en-shift');
+        let dataNumber=child.getAttribute('data-number');
+      //  console.log(dataSymbol)
+        
+        if (typeof(dataEn)==='string'){dataEn=dataEn.toLocaleLowerCase();
+            child.innerHTML=dataEn
+        }
+        if (['_',':','+',"{","}","|",'<','>','~','?','!','@','#','$','%','^','&','*','(',')','\"'].includes(dataSymbol)){
+           // console.log(dataNumber)
+            child.innerHTML=dataNumber
+        }
+       
+    }
 }
 
 
-for(let i=0;i<letter.children.length;i++){
-
+let shiftFuncDownUpper=function(){ 
+    for(let i=0;i<letter.children.length;i++){
     let child =letter.children[i];
+    let dataEn=child.getAttribute('data-en');
+    let dataSymbol= child.getAttribute('data-symbol');
+    let dataNumber=child.getAttribute('data-number');
+    
+    if (typeof(dataEn)==='string'){dataEn=dataEn.toLocaleLowerCase();
+        child.innerHTML=dataEn
+    }
+    if ("'"===dataNumber){
+        child.innerHTML=dataSymbol;
+      
+    }
+    if (Number(dataNumber)||dataNumber==='0'||['-',';','=',"[","]","\\", ',','.','`','/', "'"].includes(dataNumber)){
+        child.innerHTML=dataSymbol;
+       // console.log(dataNumber)
+    }
+    
+}
+
+}
+let shiftFunUpUpper=function(){
+    for(let i=0;i<letter.children.length;i++){
+        let child =letter.children[i];
+        let data=child.getAttribute('data'); 
+        let dataRu=child.getAttribute('data-ru'); 
+        let dataEn=child.getAttribute('data-en');
+        let dataShift= child.getAttribute('data-shift');
+        let dataSymbolRu= child.getAttribute('data-symbol-ru');
+        let dataSymbol= child.getAttribute('data-symbol');
+        let dataEnShift= child.getAttribute('data-en-shift');
+        let dataNumber=child.getAttribute('data-number');
+      //  console.log(dataSymbol)
+        
+        if (typeof(dataEn)==='string'){dataEn=dataEn.toLocaleUpperCase();
+            child.innerHTML=dataEn
+        }
+        if (['_',':','+',"{","}","|",'<','>','~','?','!','@','#','$','%','^','&','*','(',')','\"'].includes(dataSymbol)){
+           // console.log(dataNumber)
+            child.innerHTML=dataNumber
+        }
+       
+    }
+}
+
+let capsFuncDown=function(){ 
+    for(let i=0;i<letter.children.length;i++){
+    let child =letter.children[i];
+    let dataEn=child.getAttribute('data-en');
+    let dataSymbol= child.getAttribute('data-symbol');
+    let dataNumber=child.getAttribute('data-number');
+    
+    if (typeof(dataEn)==='string'){dataEn=dataEn.toUpperCase();
+        child.innerHTML=dataEn
+    }
+    if (['_',':','+',"{","}","|",'<','>','~','?','!','@','#','$','%','^','&','*','(',')','\"'].includes(dataSymbol)){
+        // console.log(dataNumber)
+         child.innerHTML=dataNumber
+     }
+   
+}
+
+}
+let capsFunUp=function(){
+    for(let i=0;i<letter.children.length;i++){
+        let child =letter.children[i];
+        let data=child.getAttribute('data'); 
+        let dataRu=child.getAttribute('data-ru'); 
+        let dataEn=child.getAttribute('data-en');
+        let dataShift= child.getAttribute('data-shift');
+        let dataSymbolRu= child.getAttribute('data-symbol-ru');
+        let dataSymbol= child.getAttribute('data-symbol');
+        let dataEnShift= child.getAttribute('data-en-shift');
+        let dataNumber=child.getAttribute('data-number');
+      //  console.log(dataSymbol)
+        
+        if (typeof(dataEn)==='string'){dataEn=dataEn.toLocaleLowerCase();
+            child.innerHTML=dataEn
+        }
+        if (['_',':','+',"{","}","|",'<','>','~','?','!','@','#','$','%','^','&','*','(',')','\"'].includes(dataSymbol)){
+            // console.log(dataNumber)
+             child.innerHTML=dataNumber
+         }
+       
+    }
+}
+for(let i=0;i<letter.children.length;i++){
+    let child =letter.children[i];
+console.log(letter.children[17].textContent===letter.children[17].textContent.toUpperCase());
+
+    
     child.addEventListener('mousedown', function() {
-        if(child.classList.contains('shift-right') || child.classList.contains('shift-left')) {
-            console.log("--> Mouse DOWN!!!")
-            initShift(en)
+        if(child.classList.contains('caps')) 
+        {console.log(letter.children[17].innerText===letter.children[17].innerText.toUpperCase());
+            if (letter.children[17].innerText===letter.children[17].innerText.toUpperCase())
+            {capsFunUp();console.log("--> Hi1")}
+       
+        else{capsFuncDown(); } console.log("--> Hi2s")}
+    
         }
-    });
+    );
+    
+        child.addEventListener('mousedown', function() {
+            if(child.classList.contains('shift-right') || child.classList.contains('shift-left')) {
+                if (letter.children[17].innerText===letter.children[17].innerText.toLocaleLowerCase())
+                  {shiftFuncDown();}
+                  else{shiftFuncDownUpper();}
+                
+            }
+        });
+    
+        child.addEventListener('mouseup', function() {
+            console.log("--> Mouse UP!!!!");
+            if(child.classList.contains('shift-right')|| child.classList.contains('shift-left')) {
+                if (letter.children[17].innerText===letter.children[17].innerText.toUpperCase())
+              {shiftFunUp();}
+              else{shiftFunUpUpper();}
+               
+            }
+        })
 
-    child.addEventListener('mouseup', function() {
-        console.log("--> Mouse UP!!!!");
-        if(child.classList.contains('shift-right')|| child.classList.contains('shift-left')) {
-            console.log("xxxxxxx")
-            initShift(en)
-        }
-    });
-}
 
 
 
 
-// document.addEventListener('mousedown', function(event) {
-//     //const code = target.getAttribute("data");
-//     for(let i=0;i<letter.children.length;i++){
-//     //console.log(letter.children[i])
-//     if (letter.children[i].classList.contains('shift-left')){ initShift(en); console.log(letter.children[i])} 
-// }})
+    // child.addEventListener('mousedown', function() {
+    //     if(child.classList.contains('shift-right') || child.classList.contains('shift-left')) {
+    //         console.log("--> Mouse DOWN!!!")
+    //         shiftFuncDown();
 
+    //     }
+    // });
 
+    // child.addEventListener('mouseup', function() {
+    //     if(child.classList.contains('shift-right')|| child.classList.contains('shift-left')) {
+    //         shiftFunUp();
+    //     }
+    // });
+    
+  }
+    
 
-//console.log(letter.children[i])
-
-//   en.map((el)=>{document.addEventListener('mousedown', function(event) {    
-//     if (el.code==='ShiftLeft' ||el.code==='ShiftRight' ) {initShift(en);}})
-//          }
-//  );
 
  
 document.addEventListener('keyup', function(event) {  
-     if (event.key == 'Shift' ) {init(en) } 
+     if (event.key == 'Shift' ) {shiftFunUp(); } 
       }
   );
   
 document.addEventListener('keydown', function(event) {    
-       if (event.key == 'Shift') {initShift(en); }
+       if (event.key == 'Shift') { shiftFuncDown(); }
         }
     );
-  
+
+
 // document.addEventListener('click',()=> {
 //     if (en[28].code==='CapsLock' ) {initShift(en); console.log(1) }
 //     });
