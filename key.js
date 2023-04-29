@@ -1,26 +1,13 @@
+(()=>{
 var textarea = document.createElement("textarea");
-    //var t = document.createTextNode("your text");
 textarea.setAttribute('style','color:black; border: 1px solid black; width:800px;height:300px; margin:20px auto;display:flex;')
-   // textarea.appendChild(t);
 document.body.appendChild(textarea);
    
 var letter = document.createElement("div");
-    //var t = document.createTextNode("your text");
 letter.classList.add('letter-holder')
 document.body.appendChild(letter);
     
-//let cod=[];
-   // let keybord=['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight', 'ControlLeft', 'MetaLeft'];
-// let keybord=['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter', 'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/','ArrowUp', 'Shift', 'Control', 'Meta', 'Alt', ' ', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'];
-// let keybordShift=['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace', 'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter', 'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?','ArrowUp', 'Shift', 'Control', 'Meta', 'Alt', ' ', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'];
-// let keybordCaps=['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter', 'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/','ArrowUp', 'Shift', 'Control', 'Meta', 'Alt', ' ', 'Alt', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'Control'];
 
-//    document.onkeydown=function(e){
-//     cod.push(e.key);
-   
-//         console.log(cod)
-
-//     }
 let en=[
     {
       small: '`',
@@ -641,7 +628,6 @@ let shiftFuncDown=function(){
     }
     if (Number(dataNumber)||dataNumber==='0'||['-',';','=',"[","]","\\", ',','.','`','/', "'"].includes(dataNumber)){
         child.innerHTML=dataSymbol;
-       // console.log(dataNumber)
     }
     
 }
@@ -658,19 +644,59 @@ let shiftFunUp=function(){
         let dataSymbol= child.getAttribute('data-symbol');
         let dataEnShift= child.getAttribute('data-en-shift');
         let dataNumber=child.getAttribute('data-number');
-      //  console.log(dataSymbol)
-        
         if (typeof(dataEn)==='string'){dataEn=dataEn.toLocaleLowerCase();
             child.innerHTML=dataEn
         }
         if (['_',':','+',"{","}","|",'<','>','~','?','!','@','#','$','%','^','&','*','(',')','\"'].includes(dataSymbol)){
-           // console.log(dataNumber)
             child.innerHTML=dataNumber
         }
        
     }
 }
+let ctrlAltRu=function(){
+    for(let i=0;i<letter.children.length;i++){
+        let child =letter.children[i];
+        let data=child.getAttribute('data'); 
+        let dataRu=child.getAttribute('data-ru'); 
+        let dataEn=child.getAttribute('data-en');
+        let dataShift= child.getAttribute('data-shift');
+        let dataSymbolRu= child.getAttribute('data-symbol-ru');
+        let dataSymbol= child.getAttribute('data-symbol');
+        let dataEnShift= child.getAttribute('data-en-shift');
+        let dataNumber=child.getAttribute('data-number');
+        let dataRuShift=child.getAttribute('data-ru-shift');
+        if (typeof(dataRu)==='string'){
+            child.innerHTML=dataRu
+        }
+         if (["\\",'/'].includes(dataNumber)){
+           child.innerHTML=dataSymbolRu
+         }
+    }
+}
 
+let ctrlAltEn=function(){
+    for(let i=0;i<letter.children.length;i++){
+        let child =letter.children[i];
+        let data=child.getAttribute('data'); 
+        let dataRu=child.getAttribute('data-ru'); 
+        let dataEn=child.getAttribute('data-en');
+        let dataShift= child.getAttribute('data-shift');
+        let dataSymbolRu= child.getAttribute('data-symbol-ru');
+        let dataSymbol= child.getAttribute('data-symbol');
+        let dataEnShift= child.getAttribute('data-en-shift');
+        let dataNumber=child.getAttribute('data-number');
+        let dataRuShift=child.getAttribute('data-ru-shift');
+        if (typeof(dataRu)==='string'){
+            child.innerHTML=dataEn
+        }
+         if (["\\",'.',',',"/"].includes(dataSymbolRu)){
+           child.innerHTML=dataNumber
+         }
+         if (['б','ю','э','ж','х','ъ','ё'].includes(dataRu)){
+            child.innerHTML=dataNumber
+          }
+    }
+}
 
 let shiftFuncDownUpper=function(){ 
     for(let i=0;i<letter.children.length;i++){
@@ -678,17 +704,14 @@ let shiftFuncDownUpper=function(){
     let dataEn=child.getAttribute('data-en');
     let dataSymbol= child.getAttribute('data-symbol');
     let dataNumber=child.getAttribute('data-number');
-    
     if (typeof(dataEn)==='string'){dataEn=dataEn.toLocaleLowerCase();
         child.innerHTML=dataEn
     }
     if ("'"===dataNumber){
         child.innerHTML=dataSymbol;
-      
     }
     if (Number(dataNumber)||dataNumber==='0'||['-',';','=',"[","]","\\", ',','.','`','/', "'"].includes(dataNumber)){
         child.innerHTML=dataSymbol;
-       // console.log(dataNumber)
     }
     
 }
@@ -705,13 +728,10 @@ let shiftFunUpUpper=function(){
         let dataSymbol= child.getAttribute('data-symbol');
         let dataEnShift= child.getAttribute('data-en-shift');
         let dataNumber=child.getAttribute('data-number');
-      //  console.log(dataSymbol)
-        
         if (typeof(dataEn)==='string'){dataEn=dataEn.toLocaleUpperCase();
             child.innerHTML=dataEn
         }
         if (['_',':','+',"{","}","|",'<','>','~','?','!','@','#','$','%','^','&','*','(',')','\"'].includes(dataSymbol)){
-           // console.log(dataNumber)
             child.innerHTML=dataNumber
         }
        
@@ -729,10 +749,8 @@ let capsFuncDown=function(){
         child.innerHTML=dataEn
     }
     if (['_',':','+',"{","}","|",'<','>','~','?','!','@','#','$','%','^','&','*','(',')','\"'].includes(dataSymbol)){
-        // console.log(dataNumber)
          child.innerHTML=dataNumber
      }
-   
 }
 
 }
@@ -761,26 +779,20 @@ let capsFunUp=function(){
 }
 for(let i=0;i<letter.children.length;i++){
     let child =letter.children[i];
-console.log(letter.children[17].textContent===letter.children[17].textContent.toUpperCase());
-
-    
     child.addEventListener('mousedown', function() {
         if(child.classList.contains('caps')) 
-        {console.log(letter.children[17].innerText===letter.children[17].innerText.toUpperCase());
-            if (letter.children[17].innerText===letter.children[17].innerText.toUpperCase())
+        { if (letter.children[17].innerText===letter.children[17].innerText.toUpperCase())
             {capsFunUp();console.log("--> Hi1")}
        
         else{capsFuncDown(); } console.log("--> Hi2s")}
     
         }
     );
-    
-        child.addEventListener('mousedown', function() {
+           child.addEventListener('mousedown', function() {
             if(child.classList.contains('shift-right') || child.classList.contains('shift-left')) {
                 if (letter.children[17].innerText===letter.children[17].innerText.toLocaleLowerCase())
                   {shiftFuncDown();}
-                  else{shiftFuncDownUpper();}
-                
+                  else{shiftFuncDownUpper();} 
             }
         });
     
@@ -793,65 +805,38 @@ console.log(letter.children[17].textContent===letter.children[17].textContent.to
                
             }
         })
-
-
-
-
-
-    // child.addEventListener('mousedown', function() {
-    //     if(child.classList.contains('shift-right') || child.classList.contains('shift-left')) {
-    //         console.log("--> Mouse DOWN!!!")
-    //         shiftFuncDown();
-
-    //     }
-    // });
-
-    // child.addEventListener('mouseup', function() {
-    //     if(child.classList.contains('shift-right')|| child.classList.contains('shift-left')) {
-    //         shiftFunUp();
-    //     }
-    // });
     
   }
     
-
-
- 
 document.addEventListener('keyup', function(event) {  
-     if (event.key == 'Shift' ) {shiftFunUp(); } 
-      }
-  );
+     if (event.key === 'Shift' ) {
+        if (letter.children[17].innerText===letter.children[17].innerText.toUpperCase())
+        {shiftFunUp();}
+        else{shiftFunUpUpper();}}
+    });
   
 document.addEventListener('keydown', function(event) {    
-       if (event.key == 'Shift') { shiftFuncDown(); }
-        }
-    );
+       if (event.key === 'Shift') { 
+        if (letter.children[17].innerText===letter.children[17].innerText.toLocaleLowerCase())
+        {shiftFuncDown();}
+        else{shiftFuncDownUpper();}
+       
+       }});
 
-
-// document.addEventListener('click',()=> {
-//     if (en[28].code==='CapsLock' ) {initShift(en); console.log(1) }
-//     });
- 
-// document.addEventListener('keydown', function(event) {
-//      textarea.appendChild('event.key')}
-// );
-
-
-// document.addEventListener('click', function(event) {
-  
-//     for (let i=0;i<en.length;i++){
-//       if(en[i].code==='CapsLock'){ initShift(en);
-//      }}
-//     }
+document.addEventListener('keydown', function(event) { 
+    console.log(1)  
+  if(event.key == 'CapsLock') {
+    if (letter.children[17].innerText===letter.children[17].innerText.toUpperCase())
+      {capsFunUp();}
+    else{capsFuncDown(); } }
     
-// );
+        }
+    ); 
 
-// document.addEventListener('click', function(event) {
-  
-//     for (let i=0;i<en.length;i++){
-   
-//    textarea.appendChild('en[i].small')}}
-// );
+
+
+
+
 document.onkeydown=function(event){
   letter.querySelectorAll('.letter-holder .key').forEach(function(e){
    e.classList.remove('active')
@@ -869,16 +854,104 @@ letter.querySelectorAll('.letter-holder .key').forEach(function(e){
   }
 })
 
-for (let key of en) {
-   // console.log(key.small)
-    key.onclick = function () {
-    textarea.append(key.small.textContent);
-    console.log(key.small.textContent,57)
-    }
-    }
+window.addEventListener('load', function() {
+    const textarea = document.querySelector('textarea');
+    textarea.focus();
+  });
 
-//     let code= letter.querySelectorAll('.letter-holder .key').forEach(function(e){
+let isCtrl = false;
+let isAlt = false;
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Control') {
+    isCtrl = true;
+  } else if (event.key === 'Alt') {
+    isAlt = true;
+  }
+  
+  if (isCtrl && isAlt) {
+    if (/^[a-zA-Z]+$/.test(letter.children[17].innerText))
+   { console.log(event.key);
+    ctrlAltRu();
+    if(event.key===ru.small){
+       event.key=ru.small 
+    }
+    }
+    else{ctrlAltEn();
+        event.key=en.small}
+ 
+
+  }
+  window.addEventListener('load', function() {
+    const textarea = document.querySelector('textarea');
+    textarea.focus();
+  });
+});
+
+document.addEventListener('keyup', (event) => {
+  if (event.key === 'Control') {
+    isCtrl = false;
+  } else if (event.key === 'Alt') {
+    isAlt = false;
+  }
+  
+});
+
+
+
+textarea.addEventListener('keydown', (event) => {
+    const key = event.key;
+    const value = textarea.value;
+    const selectionStart = textarea.selectionStart;
+    const selectionEnd = textarea.selectionEnd;
+  
+    const newValue = value.slice(0, selectionStart) + key + value.slice(selectionEnd);
+  
+    textarea.value = newValue;
+    textarea.selectionStart = selectionEnd + 1;
+    textarea.selectionEnd = selectionEnd + 1;
+  });
+
+const keyboardkey = document.querySelectorAll('.letter-holder .key');
+
+
+keyboardkey.forEach((char) => {
+    char.addEventListener('click', () => {
+      const key = char.textContent;
+      const cursorPos = textarea.selectionStart;
+      if (key === 'Enter') {
+        textarea.value = textarea.value.substring(0, cursorPos) + '\n' + textarea.value.slice(cursorPos);
+        textarea.setSelectionRange(cursorPos + 1, cursorPos + 1);
+      } 
+      else if (key === 'Backspace') {
+        if (cursorPos > 0) {
+          textarea.value = textarea.value.substring(0, cursorPos - 1) + textarea.value.slice(cursorPos);
+          textarea.setSelectionRange(cursorPos - 1, cursorPos - 1);
+        }
+      }
+      else if (key === 'CapsLock'||key==='Shift') {
+        textarea.value = textarea.value.substring(0, cursorPos) + '' + textarea.value.slice(cursorPos);
+        textarea.setSelectionRange(cursorPos + 1, cursorPos + 1); }
+      else if (key === 'Tab') {
+        const selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+        const beforeCursor = textarea.value.slice(0, textarea.selectionStart);
+        const afterCursor = textarea.value.slice(textarea.selectionEnd);
+        const tab = '    '; 
         
-//           let code=e.getAttribute('data'); console.log(code)
-//       })
-//  console.log(code)
+        if (selectedText.length > 0) {
+          const newText = beforeCursor + tab + afterCursor;
+          textarea.value = newText;
+          textarea.setSelectionRange(beforeCursor.length + tab.length, beforeCursor.length + tab.length);
+        } else {
+          const newText = beforeCursor + tab + afterCursor;
+          textarea.value = newText;
+          textarea.setSelectionRange(textarea.selectionStart + tab.length, textarea.selectionEnd + tab.length);
+        }
+      }
+      else {
+        textarea.value = textarea.value.substring(0, cursorPos) + key + textarea.value.slice(cursorPos);
+        textarea.setSelectionRange(cursorPos + 1, cursorPos + 1);
+      }})})
+
+})
+();
