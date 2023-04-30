@@ -900,16 +900,37 @@ document.addEventListener('keyup', (event) => {
 
 
 textarea.addEventListener('keydown', (event) => {
+   
     const key = event.key;
     const value = textarea.value;
     const selectionStart = textarea.selectionStart;
     const selectionEnd = textarea.selectionEnd;
+    let newValue = value.slice(0, selectionStart) + key + value.slice(selectionEnd);
+  if (key === 'Enter') {
   
-    const newValue = value.slice(0, selectionStart) + key + value.slice(selectionEnd);
-  
+    newValue = value.slice(0, selectionStart) + '\n' + value.slice(selectionEnd);
     textarea.value = newValue;
     textarea.selectionStart = selectionEnd + 1;
-    textarea.selectionEnd = selectionEnd + 1;
+    textarea.selectionEnd = selectionEnd + 0;
+      } 
+  else if (key === 'Backspace') {
+  
+    newValue = value.slice(0, selectionStart) + value.slice(selectionEnd);
+    textarea.value = newValue;
+    textarea.selectionStart = selectionEnd - 1;
+    textarea.selectionEnd = selectionEnd - 0;
+      } 
+  else if (key === 'CapsLock'||key === 'Shift'||key === 'Control'||key === 'Alt'||key === 'Mic') {
+  
+    newValue = value.slice(0, selectionStart) + value.slice(selectionEnd);
+    textarea.value = newValue;
+    textarea.selectionStart = selectionEnd + 1;
+    textarea.selectionEnd = selectionEnd - 0;
+      }   
+  else{    
+    textarea.value = newValue;
+    textarea.selectionStart = selectionEnd + 1;
+    textarea.selectionEnd = selectionEnd + 1;}
   });
 
 const keyboardkey = document.querySelectorAll('.letter-holder .key');
@@ -951,7 +972,15 @@ keyboardkey.forEach((char) => {
       else {
         textarea.value = textarea.value.substring(0, cursorPos) + key + textarea.value.slice(cursorPos);
         textarea.setSelectionRange(cursorPos + 1, cursorPos + 1);
-      }})})
+      }
+     window.addEventListener('load', function() {
+        const textarea = document.querySelector('textarea');
+        textarea.focus();
+      });
+    })
+    })
+    
+    
 
 })
 ();
