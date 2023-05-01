@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "webpack": "^5.80.0"
+  }
+}
