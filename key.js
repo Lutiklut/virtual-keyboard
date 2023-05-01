@@ -1,4 +1,13 @@
 (()=>{
+    var name = document.createElement("h1");
+    name.classList.add('name');
+    document.body.appendChild(name);
+    name.textContent= 'Virtual keyboard'
+    var name = document.createElement("h3");
+    name.classList.add('name');
+    document.body.appendChild(name);
+    name.textContent= 'Made on Windows Combination change keyboard: CTRL + ALT'
+
 var textarea = document.createElement("textarea");
 textarea.setAttribute('style','color:black; border: 1px solid black; width:800px;height:300px; margin:20px auto;display:flex;')
 document.body.appendChild(textarea);

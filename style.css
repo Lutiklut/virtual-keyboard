@@ -1,8 +1,23 @@
+body{
+    background: black;
+}
+.name{
+    color:wheat;
+    background-attachment: fixed;
+     border: 1px solid #0c011e50; 
+     width:250px;
+     height:50px; 
+     margin:20px auto;
+     display:flex;
+     margin: auto;
+    text-align: center;
 
+
+}
 .letter-holder{
     background-color:black;
     color:red; 
-    border: 1px solid blue; 
+  
     width:800px;
     height:300px; 
     display:flex;
