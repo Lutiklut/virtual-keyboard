@@ -1230,17 +1230,7 @@ return
     textarea.selectionEnd = selectionStart + 1;}
   }
 });
-
-
-
-
-
-
-
-
-
 const keyboardkey = document.querySelectorAll('.letter-holder .key');
-
 
 keyboardkey.forEach((char) => {
     char.addEventListener('click', () => {
@@ -1282,9 +1272,5 @@ keyboardkey.forEach((char) => {
     
     })
     })
-    
-    
-
-
 })
 ();
